@@ -3,7 +3,7 @@
 
 static void RunAllTests (void)
 {
-    RUN_TEST_GROUP(speed_control);
+    RUN_TEST_GROUP(valid_speed_control);
 }
 
 int main(int argc, char * argv[])

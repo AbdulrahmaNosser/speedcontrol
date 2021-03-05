@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1614932897 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
+1614957263 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
 	<stdint.h>
 	"../unity/unity_fixture.h"
 	"../../source/speedcontrol/speedcontrol.h"
+	"../../source/switch/switch.h"
 
 1578842215 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\unity\unity_fixture.h
 	"unity.h"
@@ -51,13 +52,17 @@
 	<string.h>
 	<stdlib.h>
 
-1614930033 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
+1614957274 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
 	"../test/unity/unity_fixture.h"
 
-1614932665 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
+1614957035 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
 	<stdint.h>
+	"../switch/switch.h"
 
-1614932666 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
+1614957992 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
 	<stdint.h>
 	"speedcontrol.h"
+	"../switch/switch.h"
+
+1614953515 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
 
