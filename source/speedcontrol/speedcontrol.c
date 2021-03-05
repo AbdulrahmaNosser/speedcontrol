@@ -33,7 +33,43 @@ void generate_cmd (t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch)
             action = STATUS_QOU;
         }
         break;
-    
+
+    case PB_MINUS:
+        if (state_of_switch == PB_PRE_PRESSED)
+        {
+            if (motor_speed == MID_SPEED || motor_speed == MAX_SPEED )
+            {
+                action = SPEED_MINUS;
+            }
+            else 
+            {
+                action = STATUS_QOU;
+            }
+        }
+        else
+        {
+            action = STATUS_QOU;
+        }
+        break;
+
+    case PB_PLUS:
+        if (state_of_switch == PB_PRE_PRESSED)
+        {
+            if (motor_speed == MIN_SPEED || motor_speed == MID_SPEED )
+            {
+                action = SPEED_PLUS;
+            }
+            else 
+            {
+                action = STATUS_QOU;
+            }
+        }
+        else
+        {
+            action = STATUS_QOU;
+        }
+        break;
+
     default:
         action = STATUS_QOU;
         break;
