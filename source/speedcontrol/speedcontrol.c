@@ -17,7 +17,7 @@ void generate_cmd (t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch)
     switch (name_of_switch)
     {
     case PB_PRESSURE:
-        if (state_of_switch == PB_PRE_PRESSED)
+        if (state_of_switch == PB_PRESSED)
         {
             if (motor_speed == MID_SPEED || motor_speed == MAX_SPEED )
             {

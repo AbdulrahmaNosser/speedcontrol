@@ -38,7 +38,7 @@ TEST(speed_control, NEGATIVE_VALUES)
 TEST(speed_control, PB_PRESSURE_1)
 {
     motor_set (MIN_SPEED);
-    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    generate_cmd (PB_PRESSURE , PB_PRESSED);
     TEST_ASSERT_EQUAL( STATUS_QOU, cmd_get() );
 }
 
@@ -46,13 +46,13 @@ TEST(speed_control, PB_PRESSURE_1)
 TEST(speed_control, PB_PRESSURE_2)
 {
     motor_set (MID_SPEED);
-    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    generate_cmd (PB_PRESSURE , PB_PRESSED);
     TEST_ASSERT_EQUAL( SPEED_MINUS, cmd_get() );
 }
 TEST(speed_control, PB_PRESSURE_3)
 {
     motor_set (MAX_SPEED);
-    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    generate_cmd (PB_PRESSURE , PB_PRESSED);
     TEST_ASSERT_EQUAL( SPEED_MINUS, cmd_get() );
 }
 
@@ -60,7 +60,7 @@ TEST(speed_control, PB_PRESSURE_3)
 TEST(speed_control, PB_PRESSURE_4)
 {
     motor_set (MIN_SPEED);
-    generate_cmd (PB_PRESSURE , PB_PRESSED);
+    generate_cmd (PB_PRESSURE , PB_PRE_RELEASED);
     TEST_ASSERT_EQUAL( STATUS_QOU, cmd_get() );
 }
 TEST(speed_control, PB_MINUS_1)
