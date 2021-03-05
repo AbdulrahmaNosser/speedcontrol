@@ -1,4 +1,4 @@
-#include "test/unity/unity_fixture.h"
+#include "../test/unity/unity_fixture.h"
 #define MAKE_UNITY_VERBOSE	argc = 2; argv[1] = "-v"
 
 static void RunAllTests (void)

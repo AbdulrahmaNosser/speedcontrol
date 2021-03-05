@@ -1,6 +1,8 @@
 # depslib dependency file v1.0
-1614798736 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
+1614932897 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
+	<stdint.h>
 	"../unity/unity_fixture.h"
+	"../../source/speedcontrol/speedcontrol.h"
 
 1578842215 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\unity\unity_fixture.h
 	"unity.h"
@@ -32,4 +34,30 @@
 
 1614798541 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\main.c
 	"test/unity/unity_fixture.h"
+
+1577326492 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\unity\unity.c
+	"unity.h"
+	<stddef.h>
+	<avr/pgmspace.h>
+
+1577326492 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\unity\unity_fixture.c
+	"unity_fixture.h"
+	"unity_internals.h"
+	<string.h>
+
+1577326492 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\unity\unity_memory.c
+	"unity.h"
+	"unity_memory.h"
+	<string.h>
+	<stdlib.h>
+
+1614930033 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
+	"../test/unity/unity_fixture.h"
+
+1614932665 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
+	<stdint.h>
+
+1614932666 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
+	<stdint.h>
+	"speedcontrol.h"
 
