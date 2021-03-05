@@ -36,10 +36,21 @@ void motor_cmd (SWITCH_STATE_t state_of_switch)
             motor_set (MAX_SPEED);
         }
         
-        else
+        else{}
+        break;
+
+    case VE_NEG_PREPRESSED:
+        if (motor_speed == MID_SPEED)
         {
-            
+            motor_set (MIN_SPEED);
         }
+
+        else if (motor_speed == MAX_SPEED)
+        {
+            motor_set (MID_SPEED);
+        }
+        
+        else{}
         break;
     }    
 }

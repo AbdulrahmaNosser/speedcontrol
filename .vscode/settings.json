@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "speedcontrol.layout": true,
+    "speedcontrol.depend": true,
+    "speedcontrol.cbp": true,
+    "test\\test_cases.xlsx": true
+  }
+}
