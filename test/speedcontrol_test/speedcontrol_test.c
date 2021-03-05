@@ -7,153 +7,60 @@
 
 static uint8_t pre_state_of_motor = 0;
 
-TEST_GROUP(valid_speed_control);
+TEST_GROUP(speed_control);
 
-TEST_SETUP(valid_speed_control)
+TEST_SETUP(speed_control)
 {
-    motor_init();
+    motor_init ();
 }
 
-TEST_TEAR_DOWN(valid_speed_control)
+TEST_TEAR_DOWN(speed_control)
 {}
 
 ////////////
-TEST(valid_speed_control, DEFAULT_SPEED_MID)
+TEST(speed_control, DEFAULT_SPEED_MID)
 {
     TEST_ASSERT_EQUAL(MID_SPEED, motor_speed_get());
 }
 
 
-
-TEST(valid_speed_control, VE_POS_PREPRESSED_MID_if_MIN)
+//partetion_1
+TEST(speed_control, NEGATIVE_VALUES)
 {
-    motor_set(MIN_SPEED);
-    motor_cmd (VE_POS_PREPRESSED);
-    TEST_ASSERT_EQUAL(MID_SPEED, motor_speed_get());
+    generate_cmd (PB_PRESSURE , -1);
+    TEST_ASSERT_EQUAL( STATUS_QOU, cmd_get() );
+
+    generate_cmd (-1 , PB_PRE_PRESSED);
+    TEST_ASSERT_EQUAL( STATUS_QOU, cmd_get() );
 }
 
-TEST(valid_speed_control, VE_POS_PREPRESSED_MAX_if_MID)
+//partetion_2
+TEST(speed_control, PB_PRESSURE_1)
 {
-    motor_cmd (VE_POS_PREPRESSED);
-    TEST_ASSERT_EQUAL(MAX_SPEED, motor_speed_get());
+    motor_set (MIN_SPEED);
+    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    TEST_ASSERT_EQUAL( STATUS_QOU, cmd_get() );
 }
 
-TEST(valid_speed_control, VE_POS_PREPRESSED_MAX_if_MAX)
+//partetion_3
+TEST(speed_control, PB_PRESSURE_2)
 {
-    motor_set(MAX_SPEED);
-    motor_cmd (VE_POS_PREPRESSED);
-    TEST_ASSERT_EQUAL(MAX_SPEED, motor_speed_get());
+    motor_set (MID_SPEED);
+    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    TEST_ASSERT_EQUAL( SPEED_MINUS, cmd_get() );
+}
+TEST(speed_control, PB_PRESSURE_3)
+{
+    motor_set (MAX_SPEED);
+    generate_cmd (PB_PRESSURE , PB_PRE_PRESSED);
+    TEST_ASSERT_EQUAL( SPEED_MINUS, cmd_get() );
 }
 
-//////////////
-TEST(valid_speed_control, VE_NEG_PREPRESSED_MIN_if_MIN)
+TEST_GROUP_RUNNER(speed_control)
 {
-    motor_set(MIN_SPEED);
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MIN_SPEED, motor_speed_get());
-}
-
-TEST(valid_speed_control, VE_NEG_PREPRESSED_MIN_if_MID)
-{
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MIN_SPEED, motor_speed_get());
-}
-
-TEST(valid_speed_control, VE_NEG_PREPRESSED_MID_if_MAX)
-{
-    motor_set(MAX_SPEED);
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MID_SPEED, motor_speed_get());
-}
-
-//////////////
-TEST(valid_speed_control, P_SWCH_PRESSED_MIN_if_MIN)
-{
-    motor_set(MIN_SPEED);
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MIN_SPEED, motor_speed_get());
-}
-
-TEST(valid_speed_control, P_SWCH_PRESSED_MIN_if_MID)
-{
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MIN_SPEED, motor_speed_get());
-}
-
-TEST(valid_speed_control, P_SWCH_PRESSED_MID_if_MAX)
-{
-    motor_set(MAX_SPEED);
-    motor_cmd (VE_NEG_PREPRESSED);
-    TEST_ASSERT_EQUAL(MID_SPEED, motor_speed_get());
-}
-
-///////////
-
-TEST_GROUP_RUNNER(valid_speed_control)
-{
-    RUN_TEST_CASE(valid_speed_control, DEFAULT_SPEED_MID);
-
-    RUN_TEST_CASE(valid_speed_control, VE_POS_PREPRESSED_MID_if_MIN);
-    RUN_TEST_CASE(valid_speed_control, VE_POS_PREPRESSED_MAX_if_MID);
-    RUN_TEST_CASE(valid_speed_control, VE_POS_PREPRESSED_MAX_if_MAX);
-
-    RUN_TEST_CASE(valid_speed_control, VE_NEG_PREPRESSED_MIN_if_MIN);
-    RUN_TEST_CASE(valid_speed_control, VE_NEG_PREPRESSED_MIN_if_MID);
-    RUN_TEST_CASE(valid_speed_control, VE_NEG_PREPRESSED_MID_if_MAX);
-
-    RUN_TEST_CASE(valid_speed_control, P_SWCH_PRESSED_MIN_if_MIN);
-    RUN_TEST_CASE(valid_speed_control, P_SWCH_PRESSED_MIN_if_MID);
-    RUN_TEST_CASE(valid_speed_control, P_SWCH_PRESSED_MID_if_MAX);
-}
-
-TEST_GROUP(invalid_speed_control);
-
-TEST_SETUP(invalid_speed_control)
-{
-    motor_init();
-    pre_state_of_motor = motor_speed_get();
-}
-
-TEST_TEAR_DOWN(invalid_speed_control)
-{}
-
-TEST(invalid_speed_control, NEGATIVE_VALUES)
-{
-    motor_cmd (-1);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-}
-
-TEST(invalid_speed_control, PARTITION_5)
-{
-    motor_cmd (VE_POS_PRESSED);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-
-    motor_cmd (VE_POS_RELEASED);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-}
-
-TEST(invalid_speed_control, PARTITION_9)
-{
-    motor_cmd (VE_NEG_PRESSED);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-
-    motor_cmd (P_SWCH_PREPRESSED);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-}
-
-TEST(invalid_speed_control, PARTITION_13)
-{
-    motor_cmd (P_SWCH_PRERELEASED);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-
-    motor_cmd (P_SWCH_RELEASED + 1);
-    TEST_ASSERT_EQUAL(pre_state_of_motor, motor_speed_get());
-}
-
-TEST_GROUP_RUNNER(invalid_speed_control)
-{
-    RUN_TEST_CASE(invalid_speed_control, NEGATIVE_VALUES);
-    RUN_TEST_CASE(invalid_speed_control, PARTITION_5);
-    RUN_TEST_CASE(invalid_speed_control, PARTITION_9);
-    RUN_TEST_CASE(invalid_speed_control, PARTITION_13);
+    RUN_TEST_CASE(speed_control, DEFAULT_SPEED_MID);
+    RUN_TEST_CASE(speed_control, NEGATIVE_VALUES);
+    RUN_TEST_CASE(speed_control, PB_PRESSURE_1);
+    RUN_TEST_CASE(speed_control, PB_PRESSURE_2);
+    RUN_TEST_CASE(speed_control, PB_PRESSURE_3);
 }

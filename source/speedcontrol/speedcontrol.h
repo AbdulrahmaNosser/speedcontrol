@@ -13,7 +13,9 @@
 void motor_init (void);
 void read_switch (void);
 void motor_set (uint8_t speed);
-void motor_cmd (SWITCH_STATE_t state_of_switch);
+void generate_cmd (t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch);
+void motor_cmd (t_SPEED_ACTION action);
 uint8_t motor_speed_get (void);
+t_SPEED_ACTION cmd_get (void);
 
 #endif
