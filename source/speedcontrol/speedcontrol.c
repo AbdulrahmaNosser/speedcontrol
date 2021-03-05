@@ -40,6 +40,7 @@ void motor_cmd (SWITCH_STATE_t state_of_switch)
         break;
 
     case VE_NEG_PREPRESSED:
+    case P_SWCH_PRESSED:
         if (motor_speed == MID_SPEED)
         {
             motor_set (MIN_SPEED);
