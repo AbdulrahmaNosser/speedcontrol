@@ -3,6 +3,9 @@
     "speedcontrol.layout": true,
     "speedcontrol.depend": true,
     "speedcontrol.cbp": true,
-    "test\\test_cases.xlsx": true
+    "test\\test_cases.xlsx": true,
+    "bin\\Debug": true,
+    "bin": true,
+    "obj": true
   }
 }

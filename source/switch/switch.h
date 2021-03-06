@@ -17,11 +17,8 @@ typedef enum
     PB_PRE_RELEASED
 }t_SWITCH_STATE;
 
-typedef enum
-{
-    SPEED_MINUS,
-    SPEED_PLUS,
-    STATUS_QOU
-}t_SPEED_ACTION;
+
+t_SWITCH sw_get_name(void);
+t_SWITCH_STATE sw_get_state(void);
 
 #endif
