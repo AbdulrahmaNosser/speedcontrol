@@ -1,6 +1,2 @@
-bin/Debug/speedcontrol.exe
-obj/Debug/main.o
-obj/Debug/test/speedcontrol_test/speedcontrol_test.o
-obj/Debug/test/unity/unity_fixture.o
-obj/Debug/test/unity/unity_memory.o
-obj/Debug/test/unity/unity.o
+bin/
+obj/

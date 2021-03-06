@@ -1,7 +1,8 @@
 #include "switch.h"
 
-static t_SWITCH sw_name = PB_PRESSURE;
-static t_SWITCH_STATE sw_state = PB_RELEASED;
+static t_SWITCH sw_name;
+static t_SWITCH_STATE sw_state;
+static uint8_t sw_duration;
 
 t_SWITCH sw_get_name(void)
 {

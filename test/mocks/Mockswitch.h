@@ -2,8 +2,8 @@
 #ifndef _MOCKSWITCH_H
 #define _MOCKSWITCH_H
 
-#include "unity.h"
-#include "switch.h"
+#include "../unity/unity.h"
+#include "../../source/switch/switch.h"
 
 /* Ignore the following warnings, since we are copying code */
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
@@ -28,6 +28,8 @@ void Mockswitch_Verify(void);
 void sw_get_name_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, t_SWITCH cmock_to_return);
 #define sw_get_state_ExpectAndReturn(cmock_retval) sw_get_state_CMockExpectAndReturn(__LINE__, cmock_retval)
 void sw_get_state_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, t_SWITCH_STATE cmock_to_return);
+#define sw_get_pressed_duration_ExpectAndReturn(cmock_retval) sw_get_pressed_duration_CMockExpectAndReturn(__LINE__, cmock_retval)
+void sw_get_pressed_duration_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint8_t cmock_to_return);
 
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
 #if __GNUC__ > 4 || (__GNUC__ == 4 && (__GNUC_MINOR__ > 6 || (__GNUC_MINOR__ == 6 && __GNUC_PATCHLEVEL__ > 0)))

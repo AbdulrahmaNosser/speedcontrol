@@ -1,11 +1,12 @@
 {
   "files.exclude": {
-    "speedcontrol.layout": true,
-    "speedcontrol.depend": true,
     "speedcontrol.cbp": true,
-    "test\\test_cases.xlsx": true,
-    "bin\\Debug": true,
-    "bin": true,
-    "obj": true
+    "speedcontrol.depend": true,
+    "speedcontrol.layout": true,
+    "obj": true,
+    "bin": true
+  },
+  "files.associations": {
+    "cmock.h": "c"
   }
 }

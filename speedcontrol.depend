@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1615049103 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
+1615058166 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.c
 	<stdint.h>
 	"../unity/unity_fixture.h"
+	"../mocks/Mockswitch.h"
 	"../../source/speedcontrol/speedcontrol.h"
 	"../../source/switch/switch.h"
 
@@ -55,14 +56,37 @@
 1615049018 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
 	"../test/unity/unity_fixture.h"
 
-1615049079 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
+1615058320 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
 	<stdint.h>
 	"../switch/switch.h"
 
-1615049171 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
+1615058663 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
 	<stdint.h>
 	"speedcontrol.h"
 	"../switch/switch.h"
 
-1615046879 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
+1615051512 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
+	<stdint.h>
+
+1615056057 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.c
+	<string.h>
+	<stdlib.h>
+	<setjmp.h>
+	"../cmock/cmock.h"
+	"Mockswitch.h"
+
+1612558582 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\cmock\cmock.h
+	"cmock_internals.h"
+	<stddef.h>
+
+1615055767 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\cmock\cmock_internals.h
+	"../unity/unity.h"
+	<stdlib.h>
+
+1615057112 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.h
+	"../unity/unity.h"
+	"../../source/switch/switch.h"
+
+1612558582 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\cmock\cmock.c
+	"cmock.h"
 

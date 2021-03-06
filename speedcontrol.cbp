@@ -31,8 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.c">
+		<Unit filename="source/main.c">
 			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="source/speedcontrol/speedcontrol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="source/speedcontrol/speedcontrol.h" />
+		<Unit filename="test/cmock/cmock.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="test/cmock/cmock.h" />
+		<Unit filename="test/cmock/cmock_internals.h" />
+		<Unit filename="test/mocks/Mockswitch.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="test/speedcontrol_test/speedcontrol_test.c">
 			<Option compilerVar="CC" />
