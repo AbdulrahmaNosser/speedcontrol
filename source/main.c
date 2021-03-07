@@ -4,6 +4,7 @@
 static void RunAllTests (void)
 {
     RUN_TEST_GROUP(TDD);
+    RUN_TEST_GROUP(STATE_MACHINE);
 }
 
 int main(int argc, char * argv[])

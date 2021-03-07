@@ -12,6 +12,7 @@
 
 static uint8_t pre_state_of_motor = 0;
 
+
 TEST_GROUP(TDD);
 
 TEST_SETUP(TDD)
@@ -140,7 +141,7 @@ TEST(TDD, SW_MINUS_MAX)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_MINUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -167,7 +168,7 @@ TEST(TDD, SW_MINUS_MID)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_MINUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -194,7 +195,7 @@ TEST(TDD, SW_MINUS_MIN)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_MINUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -224,7 +225,7 @@ TEST(TDD, SW_PLUS_MAX)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_PLUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -251,7 +252,7 @@ TEST(TDD, SW_PLUS_MID)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_PLUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -278,7 +279,7 @@ TEST(TDD, SW_PLUS_MIN)
     #if STUBS_ENABLED
     sw_get_name_ExpectAndReturn(SW_PLUS);
     sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
+    sw_get_pressed_duration_ExpectAndReturn(0);
     #endif
 
     /* Arrange */
@@ -306,4 +307,304 @@ TEST_GROUP_RUNNER(TDD)
     RUN_TEST_CASE(TDD, SW_PLUS_MAX);
     RUN_TEST_CASE(TDD, SW_PLUS_MID);
     RUN_TEST_CASE(TDD, SW_PLUS_MIN);
+}
+
+
+
+TEST_GROUP(STATE_MACHINE);
+
+TEST_SETUP(STATE_MACHINE)
+{
+    motor_init ();
+}
+
+TEST_TEAR_DOWN(STATE_MACHINE)
+{}
+
+//MID_SPEED to MIN_SPEED to MID_SPEED to MIN_SPEED
+TEST(STATE_MACHINE, STATE_MACHINE_1)
+{
+    /*!
+        * @par Given : MID_SPEED
+        * @par When  : state machine case 1 is tested
+        * @par Then  : follow sequence (MID, MIN, MID, MIN)
+	*/
+
+    //MID_SPEED to MIN_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MIN_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_MINUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MIN_SPEED to MID_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MID_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MID_SPEED to MIN_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MIN_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PRESSURE);
+        sw_get_state_ExpectAndReturn(SW_S_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(30);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+}
+
+//MID_SPEED to MIN_SPEED to MID_SPEED to MAX_SPEED
+TEST(STATE_MACHINE, STATE_MACHINE_2)
+{
+    /*!
+        * @par Given : MID_SPEED
+        * @par When  : state machine case 2 is tested
+        * @par Then  : follow sequence (MID, MIN, MID, MAX)
+	*/
+
+    //MID_SPEED to MIN_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MIN_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_MINUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MIN_SPEED to MID_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MID_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MID_SPEED to MAX_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MAX_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+}
+
+//MID_SPEED to MAX_SPEED to MID_SPEED to MIN_SPEED
+TEST(STATE_MACHINE, STATE_MACHINE_3)
+{
+    /*!
+        * @par Given : MID_SPEED
+        * @par When  : state machine case 3 is tested
+        * @par Then  : follow sequence (MID, MAX, MID, MIN)
+	*/
+
+    //MID_SPEED to MAX_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MAX_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MAX_SPEED to MID_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MID_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_MINUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MID_SPEED to MIN_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MIN_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PRESSURE);
+        sw_get_state_ExpectAndReturn(SW_S_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(30);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+}
+
+//MID_SPEED to MAX_SPEED to MID_SPEED to MAX_SPEED
+TEST(STATE_MACHINE, STATE_MACHINE_4)
+{
+    /*!
+        * @par Given : MID_SPEED
+        * @par When  : state machine case 1 is tested
+        * @par Then  : follow sequence (MID, MAX, MID, MAX)
+	*/
+
+    //MID_SPEED to MAX_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MAX_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MAX_SPEED to MID_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MID_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_MINUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+
+    //MID_SPEED to MAX_SPEED
+    {
+        /* Expected state and inputs*/
+        uint8_t expected_motor_state = MAX_SPEED;
+
+        #if STUBS_ENABLED
+        sw_get_name_ExpectAndReturn(SW_PLUS);
+        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
+        sw_get_pressed_duration_ExpectAndReturn(0);
+        #endif
+
+        /* Arrange */
+
+        /* Act */
+        motor_update(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+
+        /* Assert */
+        TEST_ASSERT_EQUAL(expected_motor_state, motor_get());
+    }
+}
+
+TEST_GROUP_RUNNER(STATE_MACHINE)
+{
+    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_1);
+    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_2);
+    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_3);
+    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_4);
 }
