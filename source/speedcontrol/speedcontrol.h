@@ -21,6 +21,8 @@ void motor_set (uint8_t speed);
 uint8_t motor_get (void); 
 void motor_update (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duration);
 static void logic_sw_pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration);
+static void logic_sw_minus(t_SWITCH_STATE sw_state);
+static void logic_sw_plus(t_SWITCH_STATE sw_state);
 
 void read_switch (void);
 void generate_cmd (t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch);

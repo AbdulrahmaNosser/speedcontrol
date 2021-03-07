@@ -38,9 +38,11 @@ void motor_update (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duratio
         break;
 
     case SW_MINUS:
+        logic_sw_minus(sw_state);
         break;
-    
+
     case SW_PLUS:
+        logic_sw_plus(sw_state);
         break;
 
     default:
@@ -63,6 +65,40 @@ static void logic_sw_pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
                 motor_speed = MIN_SPEED;
             }
             else{}
+        }
+        else{}
+    }
+    else{}
+}
+
+static void logic_sw_minus(t_SWITCH_STATE sw_state)
+{
+    if (sw_state == SW_S_PRE_PRESSED)
+    {
+        if (motor_speed == MAX_SPEED)
+        {
+            motor_speed = MID_SPEED;
+        }
+        else if (motor_speed == MID_SPEED)
+        {
+            motor_speed = MIN_SPEED;
+        }
+        else{}
+    }
+    else{}
+}
+
+static void logic_sw_plus(t_SWITCH_STATE sw_state)
+{
+    if (sw_state == SW_S_PRE_PRESSED)
+    {
+        if (motor_speed == MID_SPEED)
+        {
+            motor_speed = MAX_SPEED;
+        }
+        else if (motor_speed == MIN_SPEED)
+        {
+            motor_speed = MID_SPEED;
         }
         else{}
     }
