@@ -6,13 +6,13 @@
 static uint8_t motor_speed = MID_SPEED;
 static t_SPEED_ACTION action = STATUS_QOU;
 
-void motor_init (void)
+void MotorInit (void)
 {
     motor_speed = MID_SPEED;
     action = STATUS_QOU;
 }
 
-void motor_set (uint8_t speed)
+void MotorSet (uint8_t speed)
 {
     if (speed == MIN_SPEED || speed == MID_SPEED || speed == MAX_SPEED)
     {
@@ -24,25 +24,25 @@ void motor_set (uint8_t speed)
     }
 }
 
-uint8_t motor_get (void)
+uint8_t MotorGet (void)
 {
     return motor_speed;
 }
 
-void motor_update (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duration)
+void MotorUpdate (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duration)
 {
     switch (sw_name)
     {
     case SW_PRESSURE:
-        logic_sw_pressure(sw_state, sw_duration);
+        Logic_SW_Pressure(sw_state, sw_duration);
         break;
 
     case SW_MINUS:
-        logic_sw_minus(sw_state);
+        Logic_SW_Minus(sw_state);
         break;
 
     case SW_PLUS:
-        logic_sw_plus(sw_state);
+        Logic_SW_Plus(sw_state);
         break;
 
     default:
@@ -50,7 +50,7 @@ void motor_update (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duratio
     }
 }
 
-static void logic_sw_pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
+static void Logic_SW_Pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
 {
     if (sw_state == SW_S_PRESSED)
     {
@@ -71,7 +71,7 @@ static void logic_sw_pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
     else{}
 }
 
-static void logic_sw_minus(t_SWITCH_STATE sw_state)
+static void Logic_SW_Minus(t_SWITCH_STATE sw_state)
 {
     if (sw_state == SW_S_PRE_PRESSED)
     {
@@ -88,7 +88,7 @@ static void logic_sw_minus(t_SWITCH_STATE sw_state)
     else{}
 }
 
-static void logic_sw_plus(t_SWITCH_STATE sw_state)
+static void Logic_SW_Plus(t_SWITCH_STATE sw_state)
 {
     if (sw_state == SW_S_PRE_PRESSED)
     {

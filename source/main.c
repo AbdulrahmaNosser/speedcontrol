@@ -5,6 +5,7 @@ static void RunAllTests (void)
 {
     RUN_TEST_GROUP(TDD);
     RUN_TEST_GROUP(STATE_MACHINE);
+    RUN_TEST_GROUP(EP_BVA);
 }
 
 int main(int argc, char * argv[])
