@@ -1,3 +1,10 @@
+/**
+ * @file speedcontrol_test.c
+ * @author Abdulrahman Nosser (abdulrahman.nosser@gmail.com)
+ * @brief Tests for the speed control module
+ * @details This contains the tests divided into 3 groups. TDD, state machine, and BVA tests
+ */
+
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -7,22 +14,47 @@
 #include "../../source/speedcontrol/speedcontrol.h"
 #include "../../source/switch/switch.h"
 
-//enable/disable stubs
+/**
+ * @brief change the value of STUBS_ENABLED to false to turn off stubs and to use real functions
+ *
+ */
 #define STUBS_ENABLED true
 
-static uint8_t pre_state_of_motor = 0;
-
-
-TEST_GROUP(TDD);
-
-TEST_SETUP(TDD)
+static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch, uint8_t sw_duration)
 {
-    motor_init ();
+    #if STUBS_ENABLED
+    sw_get_name_ExpectAndReturn(name_of_switch);
+    sw_get_state_ExpectAndReturn(state_of_switch);
+    sw_get_pressed_duration_ExpectAndReturn(sw_duration);
+    #endif
 }
 
+/**
+ * @brief Construct TDD test group
+ *
+ */
+TEST_GROUP(TDD);
+
+/**
+ * @brief TEST_SETUP is called before each test case to set the initial the test environment by setting the motor speed to the initial speed MID_SPEED
+ *
+ */
+TEST_SETUP(TDD)
+{
+    motor_init();
+}
+
+/**
+ * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state
+ *
+ */
 TEST_TEAR_DOWN(TDD)
 {}
 
+/**
+ * @brief Defauls speed test case
+ *
+ */
 TEST(TDD, DEFAULT_SPEED_MID)
 {
     /*!
@@ -54,12 +86,8 @@ TEST(TDD, SW_PRESSURE_MAX)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MID_SPEED;
+    stubs_return(SW_PRESSURE, SW_S_PRESSED, 30);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PRESSURE);
-    sw_get_state_ExpectAndReturn(SW_S_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
-    #endif
 
     /* Arrange */
     motor_set(MAX_SPEED);
@@ -81,12 +109,8 @@ TEST(TDD, SW_PRESSURE_MID)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MIN_SPEED;
+    stubs_return(SW_PRESSURE, SW_S_PRESSED, 30);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PRESSURE);
-    sw_get_state_ExpectAndReturn(SW_S_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
-    #endif
 
     /* Arrange */
     motor_set(MID_SPEED);
@@ -108,12 +132,8 @@ TEST(TDD, SW_PRESSURE_MIN)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MIN_SPEED;
+    stubs_return(SW_PRESSURE, SW_S_PRESSED, 30);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PRESSURE);
-    sw_get_state_ExpectAndReturn(SW_S_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(30);
-    #endif
 
     /* Arrange */
     motor_set(MIN_SPEED);
@@ -137,12 +157,8 @@ TEST(TDD, SW_MINUS_MAX)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MID_SPEED;
+    stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_MINUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
 
     /* Arrange */
     motor_set(MAX_SPEED);
@@ -164,12 +180,8 @@ TEST(TDD, SW_MINUS_MID)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MIN_SPEED;
+    stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_MINUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
 
     /* Arrange */
     motor_set(MID_SPEED);
@@ -191,12 +203,8 @@ TEST(TDD, SW_MINUS_MIN)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MIN_SPEED;
+    stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_MINUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
 
     /* Arrange */
     motor_set(MIN_SPEED);
@@ -221,12 +229,8 @@ TEST(TDD, SW_PLUS_MAX)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MAX_SPEED;
+    stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PLUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
 
     /* Arrange */
     motor_set(MAX_SPEED);
@@ -248,12 +252,7 @@ TEST(TDD, SW_PLUS_MID)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MAX_SPEED;
-
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PLUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
+    stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
     /* Arrange */
     motor_set(MID_SPEED);
@@ -275,12 +274,8 @@ TEST(TDD, SW_PLUS_MIN)
 
     /* Expected state and inputs*/
 	uint8_t expected_motor_state = MID_SPEED;
+    stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-    #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(SW_PLUS);
-    sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-    sw_get_pressed_duration_ExpectAndReturn(0);
-    #endif
 
     /* Arrange */
     motor_set(MIN_SPEED);
@@ -334,12 +329,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MIN_SPEED;
+        stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_MINUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -354,12 +345,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MID_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -374,12 +361,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MIN_SPEED;
+        stubs_return(SW_PRESSURE, SW_S_PRESSED, 30);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PRESSURE);
-        sw_get_state_ExpectAndReturn(SW_S_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(30);
-        #endif
 
         /* Arrange */
 
@@ -404,12 +387,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MIN_SPEED;
+        stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_MINUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -424,12 +403,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MID_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -444,12 +419,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MAX_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -474,12 +445,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MAX_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -494,12 +461,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MID_SPEED;
+        stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_MINUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -514,12 +477,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MIN_SPEED;
+        stubs_return(SW_PRESSURE, SW_S_PRESSED, 30);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PRESSURE);
-        sw_get_state_ExpectAndReturn(SW_S_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(30);
-        #endif
 
         /* Arrange */
 
@@ -544,12 +503,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MAX_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -564,12 +519,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MID_SPEED;
+        stubs_return(SW_MINUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_MINUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
@@ -584,12 +535,8 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
     {
         /* Expected state and inputs*/
         uint8_t expected_motor_state = MAX_SPEED;
+        stubs_return(SW_PLUS, SW_S_PRE_PRESSED, 0);
 
-        #if STUBS_ENABLED
-        sw_get_name_ExpectAndReturn(SW_PLUS);
-        sw_get_state_ExpectAndReturn(SW_S_PRE_PRESSED);
-        sw_get_pressed_duration_ExpectAndReturn(0);
-        #endif
 
         /* Arrange */
 
