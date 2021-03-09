@@ -7,6 +7,10 @@
     "bin": true
   },
   "files.associations": {
-    "cmock.h": "c"
+    "cmock.h": "c",
+    "speedcontrol.h": "c",
+    "mockswitch.h": "c",
+    "unity_fixture.h": "c",
+    "switch.h": "c"
   }
 }

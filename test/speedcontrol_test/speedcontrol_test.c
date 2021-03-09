@@ -5,30 +5,7 @@
  * @details This contains the tests divided into 3 groups. TDD, state machine, and BVA tests
  */
 
-#include <stdint.h>
-#include <stdbool.h>
-
-#include "../unity/unity_fixture.h"
-#include "../mocks/Mockswitch.h"
-
-#include "../../source/speedcontrol/speedcontrol.h"
-#include "../../source/switch/switch.h"
-
-/**
- * @brief change the value of STUBS_ENABLED to false to turn off stubs and to use real functions
- *
- */
-#define STUBS_ENABLED true
-
-static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch, uint8_t sw_duration)
-{
-    #if STUBS_ENABLED
-    SW_GetName_ExpectAndReturn(name_of_switch);
-    SW_GetState_ExpectAndReturn(state_of_switch);
-    SW_GetDuration_ExpectAndReturn(sw_duration);
-    #endif
-}
-
+#include "speedcontrol_test.h"
 /**
  * @brief Construct TDD test group
  *
