@@ -23,9 +23,9 @@
 static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch, uint8_t sw_duration)
 {
     #if STUBS_ENABLED
-    sw_get_name_ExpectAndReturn(name_of_switch);
-    sw_get_state_ExpectAndReturn(state_of_switch);
-    sw_get_pressed_duration_ExpectAndReturn(sw_duration);
+    SW_GetName_ExpectAndReturn(name_of_switch);
+    SW_GetState_ExpectAndReturn(state_of_switch);
+    SW_GetDuration_ExpectAndReturn(sw_duration);
     #endif
 }
 
@@ -93,7 +93,7 @@ TEST(TDD, SW_PRESSURE_MAX)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -116,7 +116,7 @@ TEST(TDD, SW_PRESSURE_MID)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -139,7 +139,7 @@ TEST(TDD, SW_PRESSURE_MIN)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -164,7 +164,7 @@ TEST(TDD, SW_MINUS_MAX)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -187,7 +187,7 @@ TEST(TDD, SW_MINUS_MID)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -210,7 +210,7 @@ TEST(TDD, SW_MINUS_MIN)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -236,7 +236,7 @@ TEST(TDD, SW_PLUS_MAX)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -258,7 +258,7 @@ TEST(TDD, SW_PLUS_MID)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -281,7 +281,7 @@ TEST(TDD, SW_PLUS_MIN)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -335,7 +335,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -351,7 +351,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -367,7 +367,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -393,7 +393,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -409,7 +409,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -425,7 +425,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -451,7 +451,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -467,7 +467,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -483,7 +483,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -509,7 +509,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -525,7 +525,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -541,7 +541,7 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
         /* Arrange */
 
         /* Act */
-        MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+        MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
         /* Assert */
         TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -594,7 +594,7 @@ TEST(EP_BVA, NEGATIVE_SWITCH_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -617,7 +617,7 @@ TEST(EP_BVA, NEGATIVE_SWITCH_2)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -642,7 +642,7 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -665,7 +665,7 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_2)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -688,7 +688,7 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_3)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -711,7 +711,7 @@ TEST(EP_BVA, SW_PRESSURE_STATE_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -734,7 +734,7 @@ TEST(EP_BVA, SW_PRESSURE_STATE_2)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -757,7 +757,7 @@ TEST(EP_BVA, SW_PRESSURE_STATE_3)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -780,7 +780,7 @@ TEST(EP_BVA, SW_PRESSURE_STATE_4)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -803,7 +803,7 @@ TEST(EP_BVA, SW_PRESSURE_STATE_5)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -827,7 +827,7 @@ TEST(EP_BVA, SW_MINUS_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -850,7 +850,7 @@ TEST(EP_BVA, SW_MINUS_2)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -873,7 +873,7 @@ TEST(EP_BVA, SW_MINUS_3)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -896,7 +896,7 @@ TEST(EP_BVA, SW_MINUS_4)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -919,7 +919,7 @@ TEST(EP_BVA, SW_MINUS_5)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -942,7 +942,7 @@ TEST(EP_BVA, SW_MINUS_6)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -966,7 +966,7 @@ TEST(EP_BVA, SW_PLUS_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -989,7 +989,7 @@ TEST(EP_BVA, SW_PLUS_2)
     MotorSet(MIN_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1012,7 +1012,7 @@ TEST(EP_BVA, SW_PLUS_3)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1035,7 +1035,7 @@ TEST(EP_BVA, SW_PLUS_4)
     MotorSet(MAX_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1058,7 +1058,7 @@ TEST(EP_BVA, SW_PLUS_5)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1081,7 +1081,7 @@ TEST(EP_BVA, SW_PLUS_6)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1104,7 +1104,7 @@ TEST(EP_BVA, HIGHER_VALUES_1)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
@@ -1127,7 +1127,7 @@ TEST(EP_BVA, HIGHER_VALUES_2)
     MotorSet(MID_SPEED);
 
     /* Act */
-    MotorUpdate(sw_get_name(), sw_get_state(), sw_get_pressed_duration());
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
 
     /* Assert */
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());

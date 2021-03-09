@@ -24,9 +24,4 @@ static void Logic_SW_Pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration);
 static void Logic_SW_Minus(t_SWITCH_STATE sw_state);
 static void Logic_SW_Plus(t_SWITCH_STATE sw_state);
 
-void read_switch (void);
-void generate_cmd (t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch);
-void motor_cmd (t_SPEED_ACTION action);
-t_SPEED_ACTION cmd_get (void);
-
 #endif

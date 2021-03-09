@@ -21,8 +21,8 @@ typedef enum
 static t_SWITCH_STATE state_of_switch;
 static uint8_t duration_of_switch;
 
-t_SWITCH sw_get_name(void);
-t_SWITCH_STATE sw_get_state(void);
-uint8_t sw_get_pressed_duration(void);
+t_SWITCH SW_GetName(void);
+t_SWITCH_STATE SW_GetState(void);
+uint8_t SW_GetDuration(void);
 
 #endif
