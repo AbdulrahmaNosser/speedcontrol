@@ -19,9 +19,9 @@ typedef enum
 }t_SWITCH_STATE;
 
 
-    void SW_Read(void);
-    t_SWITCH SW_GetName(void);
-    t_SWITCH_STATE SW_GetState(void);
-    uint8_t SW_GetDuration(void);
+void SW_Read(void);
+t_SWITCH SW_GetName(void);
+t_SWITCH_STATE SW_GetState(void);
+uint16_t SW_GetDuration(void);
 
 #endif

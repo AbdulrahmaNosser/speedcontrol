@@ -49,7 +49,7 @@
 	<string.h>
 	<stdlib.h>
 
-1615316906 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
+1615398432 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
 	"../test/unity/unity_fixture.h"
 	"switch/switch.h"
 	"../test/speedcontrol_test/speedcontrol_test.h"
@@ -63,7 +63,7 @@
 	"speedcontrol.h"
 	"../switch/switch.h"
 
-1615314719 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
+1615400297 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
 	<stdint.h>
 
 1615309172 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.c
@@ -88,11 +88,12 @@
 1612558582 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\cmock\cmock.c
 	"cmock.h"
 
-1615316231 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.c
+1615401837 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.c
 	<stdio.h>
+	<string.h>
 	"switch.h"
 
-1615316863 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.h
+1615317564 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.h
 	<stdbool.h>
 	"../../source/speedcontrol/speedcontrol.h"
 	"../../source/switch/switch.h"
