@@ -38,6 +38,13 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="source/speedcontrol/speedcontrol.h" />
+		<Unit filename="source/switch/switch.c">
+			<Option compilerVar="CC" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="source/switch/switch.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="test/cmock/cmock.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -45,10 +52,17 @@
 		<Unit filename="test/cmock/cmock_internals.h" />
 		<Unit filename="test/mocks/Mockswitch.c">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="test/mocks/Mockswitch.h">
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="test/speedcontrol_test/speedcontrol_test.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="test/speedcontrol_test/speedcontrol_test.h">
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="test/unity/unity.c">
 			<Option compilerVar="CC" />
