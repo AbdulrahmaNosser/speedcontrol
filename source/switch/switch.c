@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #include "switch.h"
 
+
+static const char * read_file_name = "switch.txt";
 static t_SWITCH sw_name;
 static t_SWITCH_STATE sw_state;
 static uint16_t sw_duration;
 static uint8_t priority_flag = 1;
+
 
 static void SW_Clear(void)
 {
@@ -90,8 +94,8 @@ static int16_t Cursor_Update(FILE * p_file)
 {
     if (fgetc(p_file) == EOF)
     {
-        printf("\n___________________________________________________\n");
-        printf("Reached the end of file and starting over next read\n\n");
+        printf("\n__________________________________________________________\n");
+        printf("Reached the end of file and starting over in the next read\n\n");
         return 0;
     }
     else
@@ -102,8 +106,6 @@ static int16_t Cursor_Update(FILE * p_file)
 
 void SW_Read(void)
 {
-    static const char * read_file_name = "switch.txt";
-
     FILE * p_file;
     char * line[22];
     char * line_2[22];
@@ -115,6 +117,12 @@ void SW_Read(void)
     uint16_t sw_order_next;
 
     p_file = fopen(read_file_name, "r");
+    if (p_file == NULL)
+    {
+        printf("error: %s\n", strerror(errno));
+        return;
+    }
+    
 
     SW_Clear();
 
