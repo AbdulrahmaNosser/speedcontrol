@@ -49,24 +49,26 @@
 	<string.h>
 	<stdlib.h>
 
-1615398432 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
+1615475649 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\main.c
+	<stdbool.h>
 	"../test/unity/unity_fixture.h"
 	"switch/switch.h"
 	"../test/speedcontrol_test/speedcontrol_test.h"
 
-1615309291 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
+1615475162 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.h
 	<stdint.h>
 	"../switch/switch.h"
 
-1615228172 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
+1615475295 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\speedcontrol\speedcontrol.c
 	<stdint.h>
+	<stdio.h>
 	"speedcontrol.h"
 	"../switch/switch.h"
 
-1615400297 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
+1615472389 c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.h
 	<stdint.h>
 
-1615309172 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.c
+1615473751 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.c
 	<string.h>
 	<stdlib.h>
 	<setjmp.h>
@@ -81,19 +83,20 @@
 	"../unity/unity.h"
 	<stdlib.h>
 
-1615309204 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.h
+1615473788 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\mocks\mockswitch.h
 	"../unity/unity.h"
 	"../../source/switch/switch.h"
 
 1612558582 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\cmock\cmock.c
 	"cmock.h"
 
-1615456408 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.c
+1615475509 source:c:\users\auhn2\desktop\swift act challenge\speedcontrol\source\switch\switch.c
 	<stdio.h>
 	<string.h>
+	<errno.h>
 	"switch.h"
 
-1615317564 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.h
+1615473863 c:\users\auhn2\desktop\swift act challenge\speedcontrol\test\speedcontrol_test\speedcontrol_test.h
 	<stdbool.h>
 	"../../source/speedcontrol/speedcontrol.h"
 	"../../source/switch/switch.h"

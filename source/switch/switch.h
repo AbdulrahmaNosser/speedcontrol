@@ -23,5 +23,6 @@ void SW_Read(void);
 t_SWITCH SW_GetName(void);
 t_SWITCH_STATE SW_GetState(void);
 uint16_t SW_GetDuration(void);
+int8_t SW_GetFileEnd(void);
 
 #endif

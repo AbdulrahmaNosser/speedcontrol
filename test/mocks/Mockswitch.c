@@ -26,7 +26,7 @@ typedef struct _CMOCK_SW_GetState_CALL_INSTANCE
 typedef struct _CMOCK_SW_GetDuration_CALL_INSTANCE
 {
   UNITY_LINE_TYPE LineNumber;
-  uint8_t ReturnVal;
+  uint16_t ReturnVal;
 
 } CMOCK_SW_GetDuration_CALL_INSTANCE;
 
@@ -124,7 +124,7 @@ void SW_GetState_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, t_SWITCH_STATE
          sizeof(t_SWITCH_STATE[sizeof(cmock_to_return) == sizeof(t_SWITCH_STATE) ? 1 : -1])); /* add t_SWITCH_STATE to :treat_as_array if this causes an error */
 }
 
-uint8_t SW_GetDuration(void)
+uint16_t SW_GetDuration(void)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
   CMOCK_SW_GetDuration_CALL_INSTANCE* cmock_call_instance;
@@ -137,7 +137,7 @@ uint8_t SW_GetDuration(void)
   return cmock_call_instance->ReturnVal;
 }
 
-void SW_GetDuration_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint8_t cmock_to_return)
+void SW_GetDuration_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint16_t cmock_to_return)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_SW_GetDuration_CALL_INSTANCE));
   CMOCK_SW_GetDuration_CALL_INSTANCE* cmock_call_instance = (CMOCK_SW_GetDuration_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);

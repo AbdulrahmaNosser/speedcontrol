@@ -14,8 +14,6 @@
  *
  */
 #define STUBS_ENABLED true
-#define RELEASE true
-#define DEBUG !RELEASE
 
 #define MAKE_UNITY_VERBOSE	argc = 2; argv[1] = "-v"
 

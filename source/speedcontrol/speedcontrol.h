@@ -19,9 +19,6 @@ typedef enum
 void MotorInit (void);
 void MotorSet (uint8_t speed);
 uint8_t MotorGet (void); 
-void MotorUpdate (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint8_t sw_duration);
-static void Logic_SW_Pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration);
-static void Logic_SW_Minus(t_SWITCH_STATE sw_state);
-static void Logic_SW_Plus(t_SWITCH_STATE sw_state);
+void MotorUpdate (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint16_t sw_duration);
 
 #endif

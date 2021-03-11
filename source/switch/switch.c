@@ -10,7 +10,7 @@ static t_SWITCH sw_name;
 static t_SWITCH_STATE sw_state;
 static uint16_t sw_duration;
 static uint8_t priority_flag = 1;
-
+static int8_t end_of_file = NULL;
 
 static void SW_Clear(void)
 {
@@ -92,23 +92,25 @@ static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16
 
 static int16_t Cursor_Update(FILE * p_file)
 {
+    int16_t cursor;
+
     if (fgetc(p_file) == EOF)
     {
-        printf("\n__________________________________________________________\n");
-        printf("Reached the end of file and starting over in the next read\n\n");
-        return 0;
+        end_of_file = EOF;
+        cursor = 0;
     }
     else
     {
-        return ftell(p_file) - 1;
+        cursor = ftell(p_file) - 1;
     }
+
+    return cursor;
 }
 
 void SW_Read(void)
 {
     FILE * p_file;
     char * line[22];
-    char * line_2[22];
     uint16_t sw_order;
     char * sw_name_string[4];
     char * sw_state_string[13];
@@ -142,8 +144,6 @@ void SW_Read(void)
         fscanf(p_file, "%hu ", &sw_order_next);
     } while(sw_order_next == sw_order);
 
-    printf("\n final: %d %d %d\n", sw_name, sw_state, sw_duration);
-
     fclose(p_file);
 }
 
@@ -160,4 +160,9 @@ t_SWITCH_STATE SW_GetState(void)
 uint16_t SW_GetDuration(void)
 {
     return sw_duration;
+}
+
+int8_t SW_GetFileEnd(void)
+{
+    return end_of_file;
 }

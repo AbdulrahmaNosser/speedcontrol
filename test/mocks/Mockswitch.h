@@ -29,7 +29,7 @@ void SW_GetName_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, t_SWITCH cmock_
 #define SW_GetState_ExpectAndReturn(cmock_retval) SW_GetState_CMockExpectAndReturn(__LINE__, cmock_retval)
 void SW_GetState_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, t_SWITCH_STATE cmock_to_return);
 #define SW_GetDuration_ExpectAndReturn(cmock_retval) SW_GetDuration_CMockExpectAndReturn(__LINE__, cmock_retval)
-void SW_GetDuration_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint8_t cmock_to_return);
+void SW_GetDuration_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, uint16_t cmock_to_return);
 
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
 #if __GNUC__ > 4 || (__GNUC__ == 4 && (__GNUC_MINOR__ > 6 || (__GNUC_MINOR__ == 6 && __GNUC_PATCHLEVEL__ > 0)))
