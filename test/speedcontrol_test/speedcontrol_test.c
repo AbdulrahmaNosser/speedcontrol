@@ -1,7 +1,7 @@
 /**
  * @file speedcontrol_test.c.
  * @brief Tests for the speed control module.
- * @details This contains the tests divided into 3 groups. **TDD**, **state machine**, and **BVA** tests.
+ * @details This contains the tests divided into 3 groups. **TDD**, **state machine**, and **BVA** tests. With total of 39 test cases.
  */
 
 #include "speedcontrol_test.h"
@@ -783,7 +783,7 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_1)
 }
 
 /**
- * @brief p switch pressed for 29 secs test case.
+ * @brief p switch pressed for 30 secs test case.
  */
 TEST(EP_BVA, SW_PRESSURE_DURATION_2)
 {
