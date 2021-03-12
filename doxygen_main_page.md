@@ -13,6 +13,18 @@
 
 @section TimeTrigger Time Triggering
 
+In a real life situation one must take into consideration multiple factors affecting the timing of the tasks. Starting with the switches one must take into consideration the physical bouncing of it. The sampling rate of the switch must be greater than or equal the bouncing time. Also, one must take into consideration the fastest human possible click.
+<br>
+The [electrical engineering journal website](https://www.eejournal.com/article/ultimate-guide-to-switch-debounce-part-4/#:~:text=As%20Jack%20Ganssle%20reported%20in,microseconds%20(or%206.2%20ms).) mentions that the maximum bounce duration is around  6.2 ms. But 20 ms is widely used as an assurance that the switch has debounced.
+<br>
+It is mentioned in [science daily](https://www.sciencedaily.com/releases/2018/03/180320100852.htm) that 100 ms is the fastest that a human can click a button.
+<br>
+From these two pieces of information **20 ms** is taken as the duration at which we calculate the switch sampling rate.
+<br>
+The motor speed control function rate in this case should be equal or less. Meaning that it will be called every **20 ms or more**. Because when calling the speed control function every 10 ms for example would result in wasted resources as it depends on the switch function to operate the motor. Furthermore, we run into the risk of having the speed control function giving wrong output if the implementation of the switch function stores the state of the switches in a manner that would induce an error in case of a repeated call without state change. 
+<br>
+From the durations decided we can calculate the counters of the scheduler if we opted to use one, depending on the frequency of the microcontroller.
+
 - - -
 
 @section SrcCodeDoc Source Code Documentation
@@ -21,6 +33,14 @@ check the speed control documentation @link speed_control here@endlink.
 - - -
 
 ##Switch Documentation
+For the switch module to read from the text file correctly one must write the **switch.txt** file correctly. The first column contains the order of the switches. For example if the multiple switches were triggered at the same time they will have the same number of order. The second column contains the switch name. The Third column contains the switch state. And the last column contains the duration of the pressure. You must fill all columns separated by a single space.
+<br>
+<br>
+![switch file structure](switch.txt file.jpg)
+<br>
+<br>
+The speed control module outputs the motor angles in **motor.txt**.
+<br>
 check the switch documentation @link switch_doc here@endlink.
 - - -
 @section TstDoc Testing Documentation

@@ -15,13 +15,17 @@
  * @brief Change to true or false to switch between testing with stubs and testing with .txt file.
  *
  */
-#define RELEASE false
+#define RELEASE true
 /**
  * @brief The inverse of the RELEASE macro to switch between testing with stubs and testing with .txt file.
  *
  */
 #define DEBUG !RELEASE
 
+/**
+ * @brief Encapsulates all test group runner functions.
+ * 
+ */
 #if DEBUG
 static void RunAllTests (void)
 {

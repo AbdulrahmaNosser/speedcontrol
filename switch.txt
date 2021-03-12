@@ -1,3 +1,4 @@
-1 +ve pre_pressed 12
-1 -ve pressed 23
+1 +ve pre_pressed 0
+1 -ve pre_released 0
+2 -ve pre_pressed 0
 3 p pressed 30
