@@ -1,8 +1,9 @@
 /**
  * @file main.c
- * @brief The main function were the you can switch between testing with .txt files or testing with stubs
- * @note Please set the bulid target in CodeBlocks as **Release** to test with .txt files or as **Debug** to test with stubs
- * @attention Please set the **RELEASE** to true or false according to your bulid target
+ * @brief This file has the entry program point main().
+ * @details The main file were the you can switch between testing with .txt files or testing with stubs
+ * @note Please set the build target in CodeBlocks as **Release** to test with .txt files or as **Debug** to test with stubs
+ * @attention Please set the **RELEASE** to true or false according to your build target
  */
 
 #include <stdbool.h>
@@ -31,7 +32,7 @@ int main(int argc, char * argv[])
     {
         SW_Read();
         MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
-        end_of_file = SW_GetFileEnd();
+        end_of_file = SW_FileEnd();
     }
 
 

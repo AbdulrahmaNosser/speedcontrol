@@ -1,3 +1,8 @@
+/**
+ * @file switch.c.
+ * @brief  This file has the function definitions that retrieve and processes the switches data.
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -12,6 +17,10 @@ static uint16_t sw_duration;
 static uint8_t priority_flag = 1;
 static int8_t end_of_file = NULL;
 
+/**
+ * @brief Clears the switch variables.
+ * @details This function is called in SW_Read() to clear the switch variables to prepare for the prioritization function SW_Priority() to properly work.
+ */
 static void SW_Clear(void)
 {
     sw_name = -1;
@@ -19,20 +28,31 @@ static void SW_Clear(void)
     sw_duration = 0;
 }
 
-static void SW_Priority(char * sw_name_string)
+
+/**
+ * @brief Sets the priority flag for the switches.
+ * @param sw_name_string The name of the currently triggered switch.
+ * @details This function is called in SW_Read() to set the priority flag to 1. In case of more than 1 switch is triggered at the same time the it will report the switch with the highest priority only.
+ */
+static void SW_Priority(char * sw_name_string, char* sw_state_string)
 {
-    if (!strcmp(sw_name_string, "p"))
+    if (!strcmp(sw_name_string, "p") && !strcmp(sw_name_string, "pressed"))
     {
         priority_flag = 1;
     }
-    else if (!strcmp(sw_name_string, "-ve") && sw_name != SW_PRESSURE)
+    else if (!strcmp(sw_name_string, "-ve") && sw_name != SW_PRESSURE && !strcmp(sw_name_string, "pre_pressed"))
     {
         priority_flag = 1;
     }
-    else if (!strcmp(sw_name_string, "+ve") && sw_name != SW_PRESSURE && sw_name != SW_MINUS)
+    else if (!strcmp(sw_name_string, "+ve") && sw_name != SW_PRESSURE && sw_name != SW_MINUS && !strcmp(sw_name_string, "pre_pressed"))
     {
         priority_flag = 1;
     }
+    else if (sw_name == -1)
+    {
+        priority_flag = 1;
+    }
+    
     else
     {
         priority_flag = 0;
@@ -116,7 +136,7 @@ void SW_Read(void)
     char * sw_state_string[13];
     uint16_t sw_duration_var;
     static int16_t cursor = 0;
-    uint16_t sw_order_next;
+    uint16_t sw_triggering_order;
 
     p_file = fopen(read_file_name, "r");
     if (p_file == NULL)
@@ -138,11 +158,11 @@ void SW_Read(void)
         cursor = Cursor_Update(p_file);
         fseek(p_file, cursor, SEEK_SET);
 
-        SW_Priority(sw_name_string);
+        SW_Priority(sw_name_string, sw_state_string);
         SW_Assign_Vars(sw_name_string, sw_state_string, sw_duration_var);
 
-        fscanf(p_file, "%hu ", &sw_order_next);
-    } while(sw_order_next == sw_order);
+        fscanf(p_file, "%hu ", &sw_triggering_order);
+    } while(sw_triggering_order == sw_order);
 
     fclose(p_file);
 }
@@ -162,7 +182,7 @@ uint16_t SW_GetDuration(void)
     return sw_duration;
 }
 
-int8_t SW_GetFileEnd(void)
+int8_t SW_FileEnd(void)
 {
     return end_of_file;
 }

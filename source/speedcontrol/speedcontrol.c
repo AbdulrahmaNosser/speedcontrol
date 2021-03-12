@@ -1,14 +1,33 @@
+/**
+ * @file speedcontrol.c.
+ * @brief This file has the function definitions that handle the motor speed.
+ */
+
 #include <stdint.h>
 #include <stdio.h>
 
 #include "speedcontrol.h"
 #include "../switch/switch.h"
 
+/**
+ * @brief Stores the current motor speed.
+ *
+ */
 static uint8_t motor_speed = MID_SPEED;
-static t_SPEED_ACTION action = STATUS_QOU;
-static write_file_name = "motor.txt";
 
+/**
+ * @brief Holds the file name for writing the motor speed.
+ *
+ */
+static const char * write_file_name = "motor.txt";
 
+/**
+ * @brief The logic of the **p switch.**
+ * @details This function decides whether the motor speed should decrease or not if the **Pressure switch** is pressed.
+ * It is called by MotorUpdate() to handle the **p switch** logic.
+ * @param sw_state to indicate the pressing state of the switch.
+ * @param sw_duration to indicate the duration of the press.
+ */
 static void Logic_SW_Pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
 {
     if (sw_state == SW_S_PRESSED)
@@ -30,6 +49,12 @@ static void Logic_SW_Pressure(t_SWITCH_STATE sw_state, uint8_t sw_duration)
     else{}
 }
 
+/**
+ * @brief The logic of the **-ve switch.**
+ * @details This function decides whether the motor speed should decrease or not if the **-ve switch** is pre pressed.
+ * It is called by MotorUpdate() to handle the **-ve switch** logic.
+ * @param sw_state to indicate the pressing state of the switch.
+ */
 static void Logic_SW_Minus(t_SWITCH_STATE sw_state)
 {
     if (sw_state == SW_S_PRE_PRESSED)
@@ -47,6 +72,12 @@ static void Logic_SW_Minus(t_SWITCH_STATE sw_state)
     else{}
 }
 
+/**
+ * @brief The logic of the **+ve switch.**
+ * @details This function decides whether the motor speed should increase or not if the **+ve switch** is pre pressed.
+ * It is called by MotorUpdate() to handle the **+ve switch** logic.
+ * @param sw_state to indicate the pressing state of the switch.
+ */
 static void Logic_SW_Plus(t_SWITCH_STATE sw_state)
 {
     if (sw_state == SW_S_PRE_PRESSED)
@@ -64,6 +95,10 @@ static void Logic_SW_Plus(t_SWITCH_STATE sw_state)
     else{}
 }
 
+/**
+ * @brief Prints the motor speed in a file.
+ * @details This function is used by the MotorUpdate() function to print the current speed of the motor in a .txt file.
+ */
 static void MotorPrint(void)
 {
     char * motor_speed_out[5];
@@ -80,7 +115,6 @@ static void MotorPrint(void)
 void MotorInit (void)
 {
     motor_speed = MID_SPEED;
-    action = STATUS_QOU;
 }
 
 void MotorSet (uint8_t speed)
