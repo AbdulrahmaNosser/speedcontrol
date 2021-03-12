@@ -1,4 +1,8 @@
 /**
+ * \defgroup switch_doc Switch documentation
+ * @{
+ */
+/**
  * @file switch.h.
  * @brief This file has the function declerations that retrieve and processes the switches data.
  * @see switch.c for the implementation and the static functions.
@@ -62,3 +66,4 @@ uint16_t SW_GetDuration(void);
 int8_t SW_FileEnd(void);
 
 #endif
+/**@}*/

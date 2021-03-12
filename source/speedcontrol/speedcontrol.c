@@ -1,4 +1,8 @@
 /**
+ * \defgroup speed_control Speed control documentation
+ * @{
+ */
+/**
  * @file speedcontrol.c.
  * @brief This file has the function definitions that handle the motor speed.
  */
@@ -156,3 +160,4 @@ void MotorUpdate (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint16_t sw_duratio
 
     MotorPrint();
 }
+/**@}*/

@@ -23,6 +23,14 @@ static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch
 }
 
 /**
+ * \defgroup TDD TDD test cases.
+ * @{
+ */
+/** @name TDD test cases.
+ *  @details These are the tests cases derived from the requirements provided by swift act to drive the development.
+ */
+///@{ 
+/**
  * @brief Construct TDD test group.
  */
 TEST_GROUP(TDD);
@@ -42,11 +50,6 @@ TEST_SETUP(TDD)
  */
 TEST_TEAR_DOWN(TDD)
 {}
-
-
-///@section TDD tests
-///@brief The tests used to drive the development are as follows.
-///
 
 /**
  * @brief Default speed test case.
@@ -300,9 +303,17 @@ TEST_GROUP_RUNNER(TDD)
     RUN_TEST_CASE(TDD, SW_PLUS_MID);
     RUN_TEST_CASE(TDD, SW_PLUS_MIN);
 }
+///@}
+/**@}*/
 
-
-
+/**
+ * \defgroup state_transition transition test cases.
+ * @{
+ */
+/** @name State transition test cases.
+ *  @details These are the tests cases for N-1 switch coverage.
+ */
+///@{ 
 TEST_GROUP(STATE_MACHINE);
 
 TEST_SETUP(STATE_MACHINE)
@@ -552,8 +563,17 @@ TEST_GROUP_RUNNER(STATE_MACHINE)
     RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_3);
     RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_4);
 }
+///@}
+/**@}*/
 
-
+/**
+ * \defgroup EP_BVA EP and BVA test cases.
+ * @{
+ */
+/** @name EP and BVA test cases.
+ *  @details These are the tests cases for EP and BVA testing methods.
+ */
+///@{ 
 TEST_GROUP(EP_BVA);
 
 /**
@@ -1163,3 +1183,5 @@ TEST_GROUP_RUNNER(EP_BVA)
     RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_1);
     RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_2);
 }
+///@}
+/**@}*/
