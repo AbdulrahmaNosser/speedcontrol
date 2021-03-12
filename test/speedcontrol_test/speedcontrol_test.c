@@ -6,6 +6,23 @@
  */
 
 #include "speedcontrol_test.h"
+
+/**
+ * @brief Sets the return values of the stubs.
+ * @param name_of_switch Wanted return switch name.  
+ * @param state_of_switch Wanted return switch state.
+ * @param sw_duration Wanted return switch duration.
+ * @details To disable stubs refer to speedcontrol_test.h
+ */
+static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch, uint8_t sw_duration)
+{
+    #if STUBS_ENABLED
+    SW_GetName_ExpectAndReturn(name_of_switch);
+    SW_GetState_ExpectAndReturn(state_of_switch);
+    SW_GetDuration_ExpectAndReturn(sw_duration);
+    #endif
+}
+
 /**
  * @brief Construct TDD test group
  *

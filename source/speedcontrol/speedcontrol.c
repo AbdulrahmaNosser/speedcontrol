@@ -156,4 +156,3 @@ void MotorUpdate (t_SWITCH sw_name, t_SWITCH_STATE sw_state, uint16_t sw_duratio
 
     MotorPrint();
 }
-

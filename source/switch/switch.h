@@ -1,8 +1,7 @@
 /**
  * @file switch.h.
  * @brief This file has the function declerations that retrieve and processes the switches data.
- * @see switch.c for the implementation.
- * @tableofcontents
+ * @see switch.c for the implementation and the static functions.
  */
 
 #ifndef SWITCH_H

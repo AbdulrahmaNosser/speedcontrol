@@ -32,7 +32,8 @@ static void SW_Clear(void)
 /**
  * @brief Sets the priority flag for the switches.
  * @param sw_name_string The name of the currently triggered switch.
- * @details This function is called in SW_Read() to set the priority flag to 1. In case of more than 1 switch is triggered at the same time the it will report the switch with the highest priority only.
+ * @param sw_state_string The state of the currently triggered switch.
+ * @details This function is called in SW_Read() to set the priority flag to 1. In case of more than 1 switch is triggered at the same time the it will report the switch with the highest priority only with a valid trigger.
  */
 static void SW_Priority(char * sw_name_string, char* sw_state_string)
 {
@@ -59,6 +60,13 @@ static void SW_Priority(char * sw_name_string, char* sw_state_string)
     }
 }
 
+/**
+ * @brief Assigns the read switch data to the switch variables.
+ * @param sw_name_string The read switch name.
+ * @param sw_state_string The read switch state.
+ * @param sw_duration_var The read switch trigger duration.
+ * @details This function is called by SW_Read() assign the switch variables with the proper values that the motor can read.
+ */
 static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16_t sw_duration_var)
 {
     if (priority_flag)
@@ -110,6 +118,12 @@ static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16
     }
 }
 
+/**
+ * @brief Updates the cursor location for reading the switch file.
+ * @param p_file A pointer to the file being read.
+ * @return int16_t The cursor location in the file.
+ * @details This function is called by SW_Read() to capture the last cursor location to be able to continue reading from the last locatoin. In short it makes SW_Read() reentrant.
+ */
 static int16_t Cursor_Update(FILE * p_file)
 {
     int16_t cursor;

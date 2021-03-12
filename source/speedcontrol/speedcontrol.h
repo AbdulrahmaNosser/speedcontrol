@@ -1,7 +1,7 @@
 /**
  * @file speedcontrol.h.
  * @brief This file has the function declerations that handle the motor speed.
- * @see speedcontrol.c for the implementation.
+ * @see speedcontrol.c for the implementation and the static functions.
  */
 
 #ifndef SPEEDCONTROL_H
@@ -35,7 +35,7 @@ void MotorSet (uint8_t speed);
 uint8_t MotorGet (void); 
 
 /**
- * @brief **Updates the motor speed.**
+ * @brief Updates the motor speed.
  * @details This function encapsulates all the decision making process of updating the motor speed.
  * It calls multiple static functions to complete its functionality. Logic_SW_Pressure(), Logic_SW_Minus(), Logic_SW_Plus(), MotorPrint().
  * @param sw_name The switch name pressed.

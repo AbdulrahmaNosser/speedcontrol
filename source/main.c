@@ -12,8 +12,25 @@
 #include "switch/switch.h"
 #include "../test/speedcontrol_test/speedcontrol_test.h"
 
-#define RELEASE true
+/**
+ * @brief Change to true or false to switch between testing with stubs and testing with .txt file.
+ *
+ */
+#define RELEASE false
+/**
+ * @brief The inverse of the RELEASE macro to switch between testing with stubs and testing with .txt file.
+ *
+ */
 #define DEBUG !RELEASE
+
+#if DEBUG
+static void RunAllTests (void)
+{
+    RUN_TEST_GROUP(TDD);
+    RUN_TEST_GROUP(STATE_MACHINE);
+    RUN_TEST_GROUP(EP_BVA);
+}
+#endif
 
 int main(int argc, char * argv[])
 {
