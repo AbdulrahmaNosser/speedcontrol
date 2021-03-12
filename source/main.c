@@ -26,7 +26,7 @@
 static void RunAllTests (void)
 {
     RUN_TEST_GROUP(TDD);
-    RUN_TEST_GROUP(STATE_MACHINE);
+    RUN_TEST_GROUP(STATE_TRANSITION);
     RUN_TEST_GROUP(EP_BVA);
 }
 #endif

@@ -22,6 +22,11 @@ static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch
     #endif
 }
 
+
+/**
+ * \defgroup TESTING Testing Documentation
+ * @{
+ */
 /**
  * \defgroup TDD TDD test cases.
  * @{
@@ -53,14 +58,13 @@ TEST_TEAR_DOWN(TDD)
 
 /**
  * @brief Default speed test case.
- * @details 
  */
 TEST(TDD, DEFAULT_SPEED_MID)
 {
     /*!
         * @par Given : Motor speed is unkown.
         * @par When  : motor_init() is called.
-        * @par Then  : Motor speed is medium.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state */
@@ -76,12 +80,15 @@ TEST(TDD, DEFAULT_SPEED_MID)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief p switch test speed = MAX_SPEED test case.
+ */
 TEST(TDD, SW_PRESSURE_MAX)
 {
     /*!
-        * @par Given : SW_PRESSURE is pressed for 30 secs, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p switch is pressed for 30 secs, and speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -99,12 +106,15 @@ TEST(TDD, SW_PRESSURE_MAX)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief p switch speed = MID_SPEED test case.
+ */
 TEST(TDD, SW_PRESSURE_MID)
 {
     /*!
-        * @par Given : SW_PRESSURE is pressed for 30 secs, MID_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MID to MIN
+        * @par Given : p switch is pressed for 30 secs, and speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -122,12 +132,15 @@ TEST(TDD, SW_PRESSURE_MID)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief p switch speed = MIN_SPEED test case.
+ */
 TEST(TDD, SW_PRESSURE_MIN)
 {
     /*!
-        * @par Given : SW_PRESSURE is pressed for 30 secs, MIN_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed remains MIN
+        * @par Given : SW_PRESSURE is pressed for 30 secs, and speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed remains is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -145,14 +158,15 @@ TEST(TDD, SW_PRESSURE_MIN)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-
-//SW_MINUS tests
+/**
+ * @brief -ve switch speed = MAX_SPEED test case.
+ */
 TEST(TDD, SW_MINUS_MAX)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : SW_MINUS is pre_pressed, and speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -170,12 +184,15 @@ TEST(TDD, SW_MINUS_MAX)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief -ve switch speed = MID_SPEED test case.
+ */
 TEST(TDD, SW_MINUS_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MID_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MID to MIN
+        * @par Given : SW_MINUS is pre_pressed,  and speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -193,12 +210,15 @@ TEST(TDD, SW_MINUS_MID)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief -ve switch speed = MIN_SPEED test case.
+ */
 TEST(TDD, SW_MINUS_MIN)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MIN_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed remains MIN
+        * @par Given : SW_MINUS is pre_pressed, speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -217,14 +237,15 @@ TEST(TDD, SW_MINUS_MIN)
 }
 
 
-
-//SW_PLUS tests
+/**
+ * @brief +ve switch speed = MAX_SPEED test case.
+ */
 TEST(TDD, SW_PLUS_MAX)
 {
     /*!
-        * @par Given : SW_PLUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed remains MAX
+        * @par Given : SW_PLUS is pre_pressed, speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MAX_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -242,12 +263,15 @@ TEST(TDD, SW_PLUS_MAX)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief +ve switch speed = MID_SPEED test case.
+ */
 TEST(TDD, SW_PLUS_MID)
 {
     /*!
-        * @par Given : SW_PLUS is pre_pressed, MID_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MID to MAX
+        * @par Given : SW_PLUS is pre_pressed, speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MAX_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -264,12 +288,15 @@ TEST(TDD, SW_PLUS_MID)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief +ve switch speed = MIN_SPEED test case.
+ */
 TEST(TDD, SW_PLUS_MIN)
 {
     /*!
-        * @par Given : SW_PLUS is pre_pressed, MIN_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MIN to MID
+        * @par Given : SW_PLUS is pre_pressed, speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -287,6 +314,9 @@ TEST(TDD, SW_PLUS_MIN)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief Runs the TDD test group.
+ */
 TEST_GROUP_RUNNER(TDD)
 {
     RUN_TEST_CASE(TDD, DEFAULT_SPEED_MID);
@@ -306,6 +336,8 @@ TEST_GROUP_RUNNER(TDD)
 ///@}
 /**@}*/
 
+
+
 /**
  * \defgroup state_transition transition test cases.
  * @{
@@ -314,23 +346,36 @@ TEST_GROUP_RUNNER(TDD)
  *  @details These are the tests cases for N-1 switch coverage.
  */
 ///@{ 
-TEST_GROUP(STATE_MACHINE);
+/**
+ * @brief Construct state transition test group.
+ */
+TEST_GROUP(STATE_TRANSITION);
 
-TEST_SETUP(STATE_MACHINE)
+/**
+ * @brief TEST_SETUP is called before each test case to set the initial test environment by setting the motor speed to the initial speed **MID_SPEED.**
+ *
+ */
+TEST_SETUP(STATE_TRANSITION)
 {
     MotorInit ();
 }
 
-TEST_TEAR_DOWN(STATE_MACHINE)
+/**
+ * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state.
+ *
+ */
+TEST_TEAR_DOWN(STATE_TRANSITION)
 {}
 
-//MID_SPEED to MIN_SPEED to MID_SPEED to MIN_SPEED
-TEST(STATE_MACHINE, STATE_MACHINE_1)
+/**
+ * @brief State transition MID -> MIN -> MID -> MIN.
+ */
+TEST(STATE_TRANSITION, STATE_MACHINE_1)
 {
     /*!
-        * @par Given : MID_SPEED
-        * @par When  : state machine case 1 is tested
-        * @par Then  : follow sequence (MID, MIN, MID, MIN)
+        * @par Given : speed = MID_SPEED.
+        * @par When  : state machine case 1 is tested.
+        * @par Then  : follow sequence (MID, MIN, MID, MIN).
 	*/
 
     //MID_SPEED to MIN_SPEED
@@ -382,13 +427,15 @@ TEST(STATE_MACHINE, STATE_MACHINE_1)
     }
 }
 
-//MID_SPEED to MIN_SPEED to MID_SPEED to MAX_SPEED
-TEST(STATE_MACHINE, STATE_MACHINE_2)
+/**
+ * @brief State transition MID -> MIN -> MID -> MAX.
+ */
+TEST(STATE_TRANSITION, STATE_MACHINE_2)
 {
     /*!
-        * @par Given : MID_SPEED
-        * @par When  : state machine case 2 is tested
-        * @par Then  : follow sequence (MID, MIN, MID, MAX)
+        * @par Given : MID_SPEED.
+        * @par When  : state machine case 2 is tested.
+        * @par Then  : follow sequence (MID, MIN, MID, MAX).
 	*/
 
     //MID_SPEED to MIN_SPEED
@@ -440,13 +487,15 @@ TEST(STATE_MACHINE, STATE_MACHINE_2)
     }
 }
 
-//MID_SPEED to MAX_SPEED to MID_SPEED to MIN_SPEED
-TEST(STATE_MACHINE, STATE_MACHINE_3)
+/**
+ * @brief State transition MID -> MAX -> MID -> MIN.
+ */
+TEST(STATE_TRANSITION, STATE_MACHINE_3)
 {
     /*!
-        * @par Given : MID_SPEED
-        * @par When  : state machine case 3 is tested
-        * @par Then  : follow sequence (MID, MAX, MID, MIN)
+        * @par Given : MID_SPEED.
+        * @par When  : state machine case 3 is tested.
+        * @par Then  : follow sequence (MID, MAX, MID, MIN).
 	*/
 
     //MID_SPEED to MAX_SPEED
@@ -498,13 +547,15 @@ TEST(STATE_MACHINE, STATE_MACHINE_3)
     }
 }
 
-//MID_SPEED to MAX_SPEED to MID_SPEED to MAX_SPEED
-TEST(STATE_MACHINE, STATE_MACHINE_4)
+/**
+ * @brief State transition MID -> MAX -> MID -> MAX.
+ */
+TEST(STATE_TRANSITION, STATE_MACHINE_4)
 {
     /*!
-        * @par Given : MID_SPEED
-        * @par When  : state machine case 1 is tested
-        * @par Then  : follow sequence (MID, MAX, MID, MAX)
+        * @par Given : MID_SPEED.
+        * @par When  : state machine case 4 is tested.
+        * @par Then  : follow sequence (MID, MAX, MID, MAX).
 	*/
 
     //MID_SPEED to MAX_SPEED
@@ -556,15 +607,20 @@ TEST(STATE_MACHINE, STATE_MACHINE_4)
     }
 }
 
-TEST_GROUP_RUNNER(STATE_MACHINE)
+/**
+ * @brief Runs the state transition test group.
+ */
+TEST_GROUP_RUNNER(STATE_TRANSITION)
 {
-    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_1);
-    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_2);
-    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_3);
-    RUN_TEST_CASE(STATE_MACHINE, STATE_MACHINE_4);
+    RUN_TEST_CASE(STATE_TRANSITION, STATE_MACHINE_1);
+    RUN_TEST_CASE(STATE_TRANSITION, STATE_MACHINE_2);
+    RUN_TEST_CASE(STATE_TRANSITION, STATE_MACHINE_3);
+    RUN_TEST_CASE(STATE_TRANSITION, STATE_MACHINE_4);
 }
 ///@}
 /**@}*/
+
+
 
 /**
  * \defgroup EP_BVA EP and BVA test cases.
@@ -574,6 +630,9 @@ TEST_GROUP_RUNNER(STATE_MACHINE)
  *  @details These are the tests cases for EP and BVA testing methods.
  */
 ///@{ 
+/**
+ * @brief Construct EP+BVA test group.
+ */
 TEST_GROUP(EP_BVA);
 
 /**
@@ -586,20 +645,21 @@ TEST_SETUP(EP_BVA)
 }
 
 /**
- * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state
+ * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state.
  *
  */
 TEST_TEAR_DOWN(EP_BVA)
 {}
 
-
-
+/**
+ * @brief Negative value read as a switch test case.
+ */
 TEST(EP_BVA, NEGATIVE_SWITCH_1)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : Switch value is -1, switch state is pre_pressed, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -617,12 +677,15 @@ TEST(EP_BVA, NEGATIVE_SWITCH_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
+/**
+ * @brief Negative value read as a switch state test case.
+ */
 TEST(EP_BVA, NEGATIVE_SWITCH_2)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : +ve is pressed, switch state value is -1, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -641,13 +704,15 @@ TEST(EP_BVA, NEGATIVE_SWITCH_2)
 }
 
 
-
-TEST(EP_BVA, SW_PRESSURE_DURATION_1)
+/**
+ * @brief p switch sate released test case.
+ */
+TEST(EP_BVA, SW_PRESSURE_RELEASED)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is released for 30 secs, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -665,12 +730,15 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_DURATION_2)
+/**
+ * @brief p switch sate pre_pressed test case.
+ */
+TEST(EP_BVA, SW_PRESSURE_PRE_PRESSED)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pre_pressed for 30 secs (although physically impossible), motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -688,12 +756,15 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_2)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_DURATION_3)
+/**
+ * @brief p switch pressed for 29 secs test case.
+ */
+TEST(EP_BVA, SW_PRESSURE_DURATION_1)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 29 secs, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -711,12 +782,15 @@ TEST(EP_BVA, SW_PRESSURE_DURATION_3)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_STATE_1)
+/**
+ * @brief p switch pressed for 29 secs test case.
+ */
+TEST(EP_BVA, SW_PRESSURE_DURATION_2)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 30 secs, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -734,12 +808,15 @@ TEST(EP_BVA, SW_PRESSURE_STATE_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_STATE_2)
+/**
+ * @brief p switch pressed for 31 secs test case.
+ */
+TEST(EP_BVA, SW_PRESSURE_DURATION_3)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 31 secs, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -757,12 +834,15 @@ TEST(EP_BVA, SW_PRESSURE_STATE_2)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_STATE_3)
+/**
+ * @brief p switch pressed for 30 secs while speed is MIN_SPEED.
+ */
+TEST(EP_BVA, SW_PRESSURE_PRESSED_MIN)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 30 secs, motor speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -780,12 +860,15 @@ TEST(EP_BVA, SW_PRESSURE_STATE_3)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_STATE_4)
+/**
+ * @brief p switch pressed for 30 secs while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_PRESSURE_PRESSED_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 30 secs, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -803,12 +886,15 @@ TEST(EP_BVA, SW_PRESSURE_STATE_4)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PRESSURE_STATE_5)
+/**
+ * @brief p switch pressed for 30 secs while speed is MAX_SPEED.
+ */
+TEST(EP_BVA, SW_PRESSURE_PRESSED_MAX)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pressed for 30 secs, motor speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -826,13 +912,41 @@ TEST(EP_BVA, SW_PRESSURE_STATE_5)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-
-TEST(EP_BVA, SW_MINUS_1)
+/**
+ * @brief p switch pre_released for 30 secs while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_PRESSURE_PRE_RELEASE_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : p is pre_released for 30 secs (although impossible), motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
+	*/
+
+    /* Expected state and inputs*/
+	uint8_t expected_motor_state = MID_SPEED;
+    stubs_return(SW_PRESSURE, SW_S_PRE_RELEASED, 30);
+
+
+    /* Arrange */
+    MotorSet(MID_SPEED);
+
+    /* Act */
+    MotorUpdate(SW_GetName(), SW_GetState(), SW_GetDuration());
+
+    /* Assert */
+    TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
+}
+
+/**
+ * @brief -ve switch released while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_RELEASED_MID)
+{
+    /*!
+        * @par Given : -ve is released, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -850,12 +964,15 @@ TEST(EP_BVA, SW_MINUS_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_MINUS_2)
+/**
+ * @brief -ve switch pre_pressed while speed is MIN_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_PRE_PRESSED_MIN)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : -ve is pre_pressed, motor speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -873,12 +990,15 @@ TEST(EP_BVA, SW_MINUS_2)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_MINUS_3)
+/**
+ * @brief -ve switch pre_pressed while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_PRE_PRESSED_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : -ve is pre_pressed, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MIN_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -896,12 +1016,15 @@ TEST(EP_BVA, SW_MINUS_3)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_MINUS_4)
+/**
+ * @brief -ve switch pre_pressed while speed is MAX_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_PRE_PRESSED_MAX)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : -ve is pre_pressed, motor speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -919,12 +1042,15 @@ TEST(EP_BVA, SW_MINUS_4)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_MINUS_5)
+/**
+ * @brief -ve switch pressed while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_PRESSED_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : -ve is pressed, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -942,12 +1068,15 @@ TEST(EP_BVA, SW_MINUS_5)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_MINUS_6)
+/**
+ * @brief -ve switch pre_released while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_MINUS_PRE_RELEASED_MID)
 {
     /*!
-        * @par Given : SW_MINUS is pre_pressed, MAX_SPEED
-        * @par When  : motor_update() is called
-        * @par Then  : Motor speed MAX to MID
+        * @par Given : -ve is pre_released, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -966,12 +1095,15 @@ TEST(EP_BVA, SW_MINUS_6)
 }
 
 
-TEST(EP_BVA, SW_PLUS_1)
+/**
+ * @brief +ve switch released while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_RELEASED)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_RELEASED, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MID
+        * @par Given : +ve is released, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -989,12 +1121,15 @@ TEST(EP_BVA, SW_PLUS_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PLUS_2)
+/**
+ * @brief +ve switch pre_pressed while speed is MIN_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_PRE_PRESSED_MIN)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRE_PRESSED, MIN_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed MIN to MID
+        * @par Given : +ve is pre_pressed, motor speed = MIN_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1012,12 +1147,15 @@ TEST(EP_BVA, SW_PLUS_2)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PLUS_3)
+/**
+ * @brief +ve switch pre_pressed while speed is MIN_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_PRE_PRESSED_MID)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRE_PRESSED, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed MID to MAX
+        * @par Given : +ve is pre_pressed, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MAX_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1035,12 +1173,15 @@ TEST(EP_BVA, SW_PLUS_3)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PLUS_4)
+/**
+ * @brief +ve switch pre_pressed while speed is MAX_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_PRE_PRESSED_MAX)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRE_PRESSED, MAX_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MAX
+        * @par Given : +ve is pre_pressed, motor speed = MAX_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MAX_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1058,12 +1199,15 @@ TEST(EP_BVA, SW_PLUS_4)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PLUS_5)
+/**
+ * @brief +ve switch pressed while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_PRESSED)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRESSED, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MID
+        * @par Given : +ve is pressed, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1081,12 +1225,15 @@ TEST(EP_BVA, SW_PLUS_5)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, SW_PLUS_6)
+/**
+ * @brief +ve switch pre_released while speed is MID_SPEED.
+ */
+TEST(EP_BVA, SW_PLUS_PRE_RELEASED)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRE_RELEASED, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MID
+        * @par Given : +ve is released, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1104,12 +1251,15 @@ TEST(EP_BVA, SW_PLUS_6)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, HIGHER_VALUES_1)
+/**
+ * @brief The switch value is higher than the limit.
+ */
+TEST(EP_BVA, HIGHER_VALUES_SWITCH)
 {
     /*!
-        * @par Given : SW_PLUS + 1 is SW_S_PRE_RELEASED, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MID
+        * @par Given : Higher switch value (3) is passed to the function, motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1127,12 +1277,15 @@ TEST(EP_BVA, HIGHER_VALUES_1)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-TEST(EP_BVA, HIGHER_VALUES_2)
+/**
+ * @brief The switch value is higher than the limit.
+ */
+TEST(EP_BVA, HIGHER_VALUES_SWITCH_STATE)
 {
     /*!
-        * @par Given : SW_PLUS is SW_S_PRE_RELEASED + 1, MID_SPEED
-        * @par When  : MotorUpdate() is called
-        * @par Then  : Motor speed remains MID
+        * @par Given : +ve switch with higher state of (4), motor speed = MID_SPEED.
+        * @par When  : motor_update() is called.
+        * @par Then  : Motor speed is MID_SPEED.
 	*/
 
     /* Expected state and inputs*/
@@ -1150,38 +1303,43 @@ TEST(EP_BVA, HIGHER_VALUES_2)
     TEST_ASSERT_EQUAL(expected_motor_state, MotorGet());
 }
 
-
+/**
+ * @brief Runs EP + BVA test group.
+ */
 TEST_GROUP_RUNNER(EP_BVA)
 {
     RUN_TEST_CASE(EP_BVA, NEGATIVE_SWITCH_1);
     RUN_TEST_CASE(EP_BVA, NEGATIVE_SWITCH_2);
 
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_RELEASED);
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_PRE_PRESSED);
+
     RUN_TEST_CASE(EP_BVA, SW_PRESSURE_DURATION_1);
     RUN_TEST_CASE(EP_BVA, SW_PRESSURE_DURATION_2);
     RUN_TEST_CASE(EP_BVA, SW_PRESSURE_DURATION_3);
 
-    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_STATE_1);
-    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_STATE_2);
-    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_STATE_3);
-    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_STATE_4);
-    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_STATE_5);
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_PRESSED_MIN);
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_PRESSED_MID);
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_PRESSED_MAX);
+    RUN_TEST_CASE(EP_BVA, SW_PRESSURE_PRE_RELEASE_MID);
 
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_1);
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_2);
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_3);
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_4);
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_5);
-    RUN_TEST_CASE(EP_BVA, SW_MINUS_6);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_RELEASED_MID);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_PRE_PRESSED_MIN);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_PRE_PRESSED_MID);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_PRE_PRESSED_MAX);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_PRESSED_MID);
+    RUN_TEST_CASE(EP_BVA, SW_MINUS_PRE_RELEASED_MID);
 
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_1);
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_2);
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_3);
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_4);
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_5);
-    RUN_TEST_CASE(EP_BVA, SW_PLUS_6);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_RELEASED);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_PRE_PRESSED_MIN);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_PRE_PRESSED_MID);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_PRE_PRESSED_MAX);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_PRESSED);
+    RUN_TEST_CASE(EP_BVA, SW_PLUS_PRE_RELEASED);
 
-    RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_1);
-    RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_2);
+    RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_SWITCH);
+    RUN_TEST_CASE(EP_BVA, HIGHER_VALUES_SWITCH_STATE);
 }
 ///@}
+/**@}*/
 /**@}*/
