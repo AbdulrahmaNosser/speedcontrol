@@ -15,9 +15,9 @@
  */
 typedef enum
 {   
-    SW_PRESSURE,
-    SW_MINUS,
-    SW_PLUS
+    SW_PRESSURE,    /**< "p" switch. */
+    SW_MINUS,       /**< "-ve" switch. */
+    SW_PLUS         /**< "+ve" switch. */
 }t_SWITCH;
 
 /**
@@ -25,10 +25,10 @@ typedef enum
  */
 typedef enum
 {
-    SW_S_RELEASED,
-    SW_S_PRE_PRESSED,
-    SW_S_PRESSED,
-    SW_S_PRE_RELEASED
+    SW_S_RELEASED,      /**< Released state. */
+    SW_S_PRE_PRESSED,   /**< pre pressed state. */
+    SW_S_PRESSED,       /**< pressed state. */
+    SW_S_PRE_RELEASED   /**< pre released state. */
 }t_SWITCH_STATE;
 
 /**

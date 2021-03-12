@@ -1,8 +1,7 @@
 /**
- * @file speedcontrol_test.c
- * @author Abdulrahman Nosser (abdulrahman.nosser@gmail.com)
- * @brief Tests for the speed control module
- * @details This contains the tests divided into 3 groups. TDD, state machine, and BVA tests
+ * @file speedcontrol_test.c.
+ * @brief Tests for the speed control module.
+ * @details This contains the tests divided into 3 groups. **TDD**, **state machine**, and **BVA** tests.
  */
 
 #include "speedcontrol_test.h"
@@ -12,7 +11,7 @@
  * @param name_of_switch Wanted return switch name.  
  * @param state_of_switch Wanted return switch state.
  * @param sw_duration Wanted return switch duration.
- * @details To disable stubs refer to speedcontrol_test.h
+ * @details To disable stubs refer to speedcontrol_test.h.
  */
 static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch, uint8_t sw_duration)
 {
@@ -24,13 +23,12 @@ static void stubs_return(t_SWITCH name_of_switch, t_SWITCH_STATE state_of_switch
 }
 
 /**
- * @brief Construct TDD test group
- *
+ * @brief Construct TDD test group.
  */
 TEST_GROUP(TDD);
 
 /**
- * @brief TEST_SETUP is called before each test case to set the initial the test environment by setting the motor speed to the initial speed MID_SPEED
+ * @brief TEST_SETUP is called before each test case to set the initial test environment by setting the motor speed to the initial speed **MID_SPEED.**
  *
  */
 TEST_SETUP(TDD)
@@ -39,22 +37,27 @@ TEST_SETUP(TDD)
 }
 
 /**
- * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state
+ * @brief TEST_TEAR_DOWN is called after each test to reset the test environment to the previous state.
  *
  */
 TEST_TEAR_DOWN(TDD)
 {}
 
+
+///@section TDD tests
+///@brief The tests used to drive the development are as follows.
+///
+
 /**
- * @brief Defauls speed test case
- *
+ * @brief Default speed test case.
+ * @details 
  */
 TEST(TDD, DEFAULT_SPEED_MID)
 {
     /*!
-        * @par Given : Motor speed is unkown
-        * @par When  : motor_init() is called
-        * @par Then  : Motor speed is miduim
+        * @par Given : Motor speed is unkown.
+        * @par When  : motor_init() is called.
+        * @par Then  : Motor speed is medium.
 	*/
 
     /* Expected state */

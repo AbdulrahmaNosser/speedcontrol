@@ -5,7 +5,6 @@
  * @note Please set the build target in CodeBlocks as **Release** to test with .txt files or as **Debug** to test with stubs
  * @attention Please set the **RELEASE** to true or false according to your build target
  */
-
 #include <stdbool.h>
 
 #include "../test/unity/unity_fixture.h"

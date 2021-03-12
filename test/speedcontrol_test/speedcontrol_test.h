@@ -1,6 +1,6 @@
 /**
  * @file speedcontrol_test.h
- * @brief Encapsulates includes required for testing and some testing configurations.
+ * @brief Encapsulates the **includes** required for testing and some testing configurations.
  */
 
 #ifndef SPEEDCONTROL_TEST_H
