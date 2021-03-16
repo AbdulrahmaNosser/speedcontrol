@@ -33,7 +33,7 @@ static void SW_Clear(void)
  * @brief Sets the priority flag for the switches.
  * @param sw_name_string The name of the currently triggered switch.
  * @param sw_state_string The state of the currently triggered switch.
- * @details This function is called in SW_Read() to set the priority flag to 1. In case of more than 1 switch is triggered at the same time the it will report the switch with the highest priority only with a valid trigger.
+ * @details This function is called in SW_Read() to set the priority flag to 1. In case of more than 1 switch is triggered at the same time it will report the switch with the highest priority and a valid trigger.
  */
 static void SW_Priority(char * sw_name_string, char* sw_state_string)
 {
@@ -70,7 +70,7 @@ static void SW_Priority(char * sw_name_string, char* sw_state_string)
 static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16_t sw_duration_var)
 {
     if (priority_flag)
-    {
+    {   //assigning switch name.
         if (!strcmp(sw_name_string, "p"))
         {
             sw_name = SW_PRESSURE;
@@ -88,7 +88,7 @@ static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16
             printf("\ninvalid input\n");
         }
 
-
+        //assigning switch state.
         if (!strcmp(sw_state_string, "released"))
         {
             sw_state = SW_S_RELEASED;
@@ -109,12 +109,12 @@ static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16
         {
             printf("\ninvalid input\n");
         }
-
+        //assgining duration.
         sw_duration = sw_duration_var;
     }
     else
     {
-        priority_flag = 1;
+        priority_flag = 1;      //sets priority flag for subsequent use.
     }
 }
 
@@ -122,7 +122,7 @@ static void SW_Assign_Vars(char * sw_name_string, char * sw_state_string, uint16
  * @brief Updates the cursor location for reading the switch file.
  * @param p_file A pointer to the file being read.
  * @return int16_t The cursor location in the file.
- * @details This function is called by SW_Read() to capture the last cursor location to be able to continue reading from the last locatoin. In short it makes SW_Read() reentrant.
+ * @details This function is called by SW_Read() to capture the last cursor location to be able to continue reading from the last locatoin. If the file has reached its end it sets the cursor to the begging of the file. In short it makes SW_Read() reentrant.
  */
 static int16_t Cursor_Update(FILE * p_file)
 {
@@ -175,7 +175,8 @@ void SW_Read(void)
         SW_Priority(sw_name_string, sw_state_string);
         SW_Assign_Vars(sw_name_string, sw_state_string, sw_duration_var);
 
-        fscanf(p_file, "%hu ", &sw_triggering_order);
+        //checks if there is another switch clicked simultaneously.
+        fscanf(p_file, "%hu ", &sw_triggering_order);       
     } while(sw_triggering_order == sw_order);
 
     fclose(p_file);

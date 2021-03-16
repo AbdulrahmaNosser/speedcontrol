@@ -19,9 +19,9 @@ The [electrical engineering journal website](https://www.eejournal.com/article/u
 <br>
 It is mentioned in [science daily](https://www.sciencedaily.com/releases/2018/03/180320100852.htm) that 100 ms is the fastest that a human can click a button.
 <br>
-From these two pieces of information **20 ms** is taken as the duration at which we calculate the switch sampling rate.
+From these two pieces of information **20 ms** is taken as the duration at which we calculate the switch sampling rate. Assuming that the module would need 3 samples to understand the state of the switch hence we need **60 ms** to get the state of the switch.
 <br>
-The motor speed control function rate in this case should be equal or less. Meaning that it will be called every **20 ms or more**. Because when calling the speed control function every 10 ms for example would result in wasted resources as it depends on the switch function to operate the motor. Furthermore, we run into the risk of having the speed control function giving wrong output if the implementation of the switch function stores the state of the switches in a manner that would induce an error in case of a repeated call without state change. 
+The motor speed control function rate in this case should be equal or less. Meaning that it will be called every **60 ms or more**. Because when calling the speed control function every 10 ms for example would result in wasted resources as it depends on the switch function to operate the motor. Furthermore, we run into the risk of having the speed control function giving wrong output if the implementation of the switch function stores the state of the switches in a manner that would induce an error in case of a repeated call without state change. 
 <br>
 From the durations decided we can calculate the counters of the scheduler if we opted to use one, depending on the frequency of the microcontroller.
 

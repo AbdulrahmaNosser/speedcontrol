@@ -111,9 +111,9 @@ static void MotorPrint(void)
 
     p_file = fopen(write_file_name, "w");
 
-    fseek(p_file, cursor, SEEK_SET);
+    fseek(p_file, cursor, SEEK_SET);        //sets the cursor to the last location
     fprintf(p_file, "%d\n", motor_speed);
-    cursor = ftell(p_file);
+    cursor = ftell(p_file);                 //gets the last location of the cursor
 }
 
 void MotorInit (void)
